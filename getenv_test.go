@@ -1,4 +1,4 @@
-package env
+package getenv
 
 import (
 	"os"
@@ -7,7 +7,7 @@ import (
 
 func TestGetEnv(t *testing.T) {
 
-	err := LoadEnv(".env")
+	err := LoadEnv(".env", nil)
 	if err != nil {
 		t.Error(err)
 	}
@@ -20,6 +20,11 @@ func TestGetEnv(t *testing.T) {
 	secondValue := os.Getenv("SECOND_VALUE")
 	if secondValue != "0n3hndr3ds3xtYSX" {
 		t.Error("cannot assert second value")
+	}
+
+	thirdValue := os.Getenv("THIRD_VALUE")
+	if thirdValue != "123abc" {
+		t.Error("cannot assert third value")
 	}
 
 }
